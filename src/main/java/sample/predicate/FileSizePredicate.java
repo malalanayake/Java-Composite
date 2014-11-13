@@ -9,12 +9,10 @@ import sample.filestructure.Component;
  *
  * @author malalanayake
  */
-public class FileSizePredicate implements Predicate<Component>{
-    List<Predicate> andPredicate;
+public class FileSizePredicate extends Predicate<Component>{
     int size;
 
     public FileSizePredicate(int size) {
-        andPredicate = new ArrayList<>();
         this.size = size;
     }
     
@@ -33,15 +31,5 @@ public class FileSizePredicate implements Predicate<Component>{
         return false;
     }
 
-    @Override
-    public Predicate<Component> and(Predicate<Component> p) {
-        this.andPredicate.add(p);
-        return this;
-    }
-
-    @Override
-    public Predicate<Component> or(Predicate<Component> p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }
