@@ -1,6 +1,7 @@
 package sample.filestructure;
 
 import sample.collection.FileVector;
+import sample.functor.Functor;
 import sample.predicate.Predicate;
 
 /**
@@ -64,6 +65,13 @@ public class Folder extends Component {
 
         for (Component c : this.list.filter(predicate)) {
             System.out.println(c.toString());
+        }
+    }
+
+    @Override
+    public void compute(Predicate<Component> predicate, Functor<Component, Integer> functor) {
+        for (Component c : this.list.filter(predicate)) {
+            functor.execute(c);
         }
     }
 

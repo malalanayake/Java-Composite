@@ -1,5 +1,6 @@
 package sample.filestructure;
 
+import sample.functor.Functor;
 import sample.predicate.Predicate;
 
 /**
@@ -62,5 +63,11 @@ public abstract class Component {
 
     public void print() {
         System.out.println(this.toString());
+    }
+    
+    public void compute(Predicate<Component> predicate, Functor<Component,Integer> functor){
+        if(predicate.isValid(this)){
+            functor.execute(this);
+        }
     }
 }
