@@ -13,6 +13,10 @@ public class FileVector<T> extends Vector<T> {
     public Iterator<T> getSelectiveIterator(Predicate<T> predicate) {
         return new SelectiveIterator<T>(this,predicate);
     }
+    
+    public View<T> filter(Predicate<T> predicate){
+        return new View<T>(this,predicate);
+    }
 
     public class SelectiveIterator<T> implements Iterator<T> {
 
@@ -21,7 +25,7 @@ public class FileVector<T> extends Vector<T> {
         Predicate<T> predicate;
 
         SelectiveIterator(FileVector fileVector, Predicate<T> predicate) {
-            this.myVector = myVector;
+            this.myVector = fileVector;
             this.predicate = predicate;
         }
 
@@ -54,5 +58,21 @@ public class FileVector<T> extends Vector<T> {
         public void remove() {
             throw new UnsupportedOperationException("Not supported yet.");
         }
+    }
+    
+    public class View<T> implements Iterable<T>{
+        Predicate<T> predicate;
+        FileVector<T> fileVector;
+        public View(FileVector<T> fileVector,Predicate<T> predicate) {
+            this.predicate = predicate;
+            this.fileVector = fileVector;
+        }
+
+        
+        @Override
+        public Iterator<T> iterator() {
+            return new SelectiveIterator<>(fileVector,predicate);
+        }
+        
     }
 }

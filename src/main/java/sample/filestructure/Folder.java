@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sample.filestructure;
 
-import java.util.Vector;
 import sample.collection.FileVector;
 import sample.predicate.Predicate;
 
@@ -68,10 +62,8 @@ public class Folder extends Component {
             System.out.println(this.toString());
         }
 
-        for (Component c : this.list) {
-            if (predicate.isValid(c)) {
-                System.out.println(c.toString());
-            }
+        for (Component c : this.list.filter(predicate)) {
+            System.out.println(c.toString());
         }
     }
 

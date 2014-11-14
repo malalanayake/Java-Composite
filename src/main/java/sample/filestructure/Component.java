@@ -61,7 +61,6 @@ public abstract class Component {
     }
 
     public void print() {
-        System.out.println("" + this.name + " " + this.getType() + " "
-                + this.size + " " + this.modifiedDate + " " + this.parent.getName());
+        System.out.println(this.toString());
     }
 }

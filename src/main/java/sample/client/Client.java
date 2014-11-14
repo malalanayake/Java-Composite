@@ -5,8 +5,8 @@ import sample.filestructure.DOCX;
 import sample.filestructure.Folder;
 import sample.filestructure.TXT;
 import sample.filestructure.XL;
-import sample.predicate.FileNamePredicate;
-import sample.predicate.FileSizePredicate;
+import sample.predicate.FilterByNamePredicate;
+import sample.predicate.FilterBySizePredicate;
 
 /**
  *
@@ -26,8 +26,8 @@ public class Client {
         
         rootFolder.print();
         System.out.println("\n\n");
-        FileSizePredicate fs = new FileSizePredicate(30);
-        FileNamePredicate fn = new FileNamePredicate("U");
+        FilterBySizePredicate fs = new FilterBySizePredicate(30);
+        FilterByNamePredicate fn = new FilterByNamePredicate("U");
         rootFolder.print(fs.and(fn));
         
         
